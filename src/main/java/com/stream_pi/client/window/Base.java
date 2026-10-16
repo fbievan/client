@@ -51,6 +51,7 @@ import com.stream_pi.util.platform.Platform;
 
 import javafx.application.HostServices;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.CacheHint;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
@@ -280,6 +281,18 @@ public abstract class Base extends StackPane implements ExceptionAndAlertHandler
             if(width < 500)
                 setPrefWidth(240);
         }
+    }
+
+    protected void positionStageOnScreen()
+    {
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        double width = Math.min(getStage().getWidth(), visualBounds.getWidth());
+        double height = Math.min(getStage().getHeight(), visualBounds.getHeight());
+
+        getStage().setWidth(width);
+        getStage().setHeight(height);
+        getStage().setX(visualBounds.getMinX() + (visualBounds.getWidth() - width) / 2.0);
+        getStage().setY(visualBounds.getMinY() + (visualBounds.getHeight() - height) / 2.0);
     }
 
     @Override

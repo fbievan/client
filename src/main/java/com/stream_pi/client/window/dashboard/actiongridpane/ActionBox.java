@@ -624,14 +624,17 @@ public class ActionBox extends StackPane
     public void setDefaultToggleIcon(boolean isToggleOn)
     {
         String styleClass;
+        String iconLiteral;
 
         if(isToggleOn)
         {
             styleClass = "action_box_toggle_on";
+            iconLiteral = "fas-toggle-on";
         }
         else
         {
             styleClass = "action_box_toggle_off";
+            iconLiteral = "fas-toggle-off";
         }
 
 
@@ -649,6 +652,7 @@ public class ActionBox extends StackPane
             getChildren().add(fontIcon);
         }
 
+        fontIcon.setIconLiteral(iconLiteral);
         fontIcon.getStyleClass().add(styleClass);
 
         fontIcon.toBack();

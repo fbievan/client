@@ -157,6 +157,8 @@ public class Controller extends Base
                         getStage().setWidth(getConfig().getStartupWindowWidth());
                         getStage().setHeight(getConfig().getStartupWindowHeight());
                     }
+
+                    positionStageOnScreen();
                 }
             }
 
