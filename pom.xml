@@ -40,7 +40,7 @@
 
         <controlsfx.version>11.1.1</controlsfx.version>
 
-        <attach.version>4.0.14</attach.version>
+        <attach.version>4.0.25</attach.version>
 
         <main.class.name>com.stream_pi.client/com.stream_pi.client.Main</main.class.name>
 
