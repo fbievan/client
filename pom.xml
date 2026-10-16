@@ -134,6 +134,11 @@
             <version>${attach.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.gluonhq.attach</groupId>
+            <artifactId>display</artifactId>
+            <version>${attach.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
             <version>${controlsfx.version}</version>
@@ -300,6 +305,7 @@
                         <list>browser</list>
                         <list>vibration</list>
                         <list>orientation</list>
+                        <list>display</list>
                     </attachList>
                     <reflectionList>
                         <list>java.util.logging.FileHandler</list>
@@ -336,9 +342,6 @@
                         <version>${gluonfx.plugin.version}</version>
                         <configuration>
                             <target>android</target>
-                            <linkerArgs>
-                                <list>-Wl,-z,notext</list>
-                            </linkerArgs>
                             <nativeImageArgs>
                                 <list>-Dsvm.targetName=android</list>
                             </nativeImageArgs>

@@ -49,7 +49,11 @@ import com.stream_pi.util.loggerhelper.StreamPiLogFallbackHandler;
 import com.stream_pi.util.loggerhelper.StreamPiLogFileHandler;
 import com.stream_pi.util.platform.Platform;
 
+import com.gluonhq.attach.display.DisplayService;
+
 import javafx.application.HostServices;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.CacheHint;
@@ -170,6 +174,21 @@ public abstract class Base extends StackPane implements ExceptionAndAlertHandler
         getStage().getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("icons/16x16.png"))));
 
         clientInfo = ClientInfo.getInstance();
+
+        if (clientInfo.isPhone())
+        {
+            DisplayService.create().ifPresent(displayService ->
+            {
+                displayService.setScreenAlwaysOn(true);
+
+                // The app is drawn edge-to-edge, so keep content clear of the status and navigation bars
+                ReadOnlyObjectProperty<Insets> systemBarsInsets = displayService.systemBarsInsetsProperty();
+                paddingProperty().bind(Bindings.createObjectBinding(
+                        () -> systemBarsInsets.get() == null ? Insets.EMPTY : systemBarsInsets.get(),
+                        systemBarsInsets
+                ));
+            });
+        }
 
         if ((clientInfo.getPlatform() == Platform.WINDOWS || clientInfo.getPlatform() == Platform.MAC || (clientInfo.getPlatform() == Platform.LINUX && StartupFlags.X_MODE))
                 && StartupFlags.SET_FIXED_MIN_SIZE)

@@ -25,6 +25,7 @@ module com.stream_pi.client
     requires com.gluonhq.attach.browser;
     requires com.gluonhq.attach.vibration;
     requires com.gluonhq.attach.orientation;
+    requires com.gluonhq.attach.display;
 
     requires eu.hansolo.medusa;
 
