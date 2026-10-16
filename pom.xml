@@ -336,6 +336,9 @@
                         <version>${gluonfx.plugin.version}</version>
                         <configuration>
                             <target>android</target>
+                            <linkerArgs>
+                                <list>-Wl,-z,notext</list>
+                            </linkerArgs>
                             <nativeImageArgs>
                                 <list>-Dsvm.targetName=android</list>
                             </nativeImageArgs>
