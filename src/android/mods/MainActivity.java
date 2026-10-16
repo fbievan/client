@@ -78,7 +78,6 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback,
         Log.v(TAG, "onCreate start, using Android Logging v1");
         Log.v(TAG, "Using modded MainActivity to prevent device lock");
         System.err.println("onCreate called, writing this to System.err");
-        super.onCreate(savedInstanceState);
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
